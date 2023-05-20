@@ -6,14 +6,14 @@ import pathlib
 
 # Set up credentials for Google Sheets API
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name(pathlib.Path('C:/Users/kapad/OneDrive - Northeastern University/Documents/Visual Studio 2022/mfp-sheets-3825035.json'), scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name(pathlib.Path('/Path/to/your/json/file/sheetsAPI/'), scope)
 client1 = gspread.authorize(creds)
 
 # Set up connection to MyFitnessPal API
 client = myfitnesspal.Client()
 
 
-# Set date range for data export
+# Set date range for data export 
 start_date = datetime.date(2023, 5, 8)
 end_date = datetime.date(2023, 5, 14)
 
@@ -27,7 +27,7 @@ for date in (start_date + datetime.timedelta(n) for n in range((end_date - start
     data.append(row)
 
 # Write data to Google Sheet
-url = 'https://docs.google.com/spreadsheets/d/14Zc89VAJtI1i0i7aRhXEqy6fME3yVvG3vAAQYz0pnZ8/edit#gid=825003555'
+url = 'https://docs.google.com/urlofyourgooglesheets'
   # Replace with your sheet URL
 spreadsheet = client1.open_by_url(url)
 worksheet = spreadsheet.worksheet('Progress')
